@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
-    List<Book> findByTitleContainingOrContentContaining(String searchTerm, String searchTerm2);
+    List<Book> findByTitleContainingOrAuthorContaining(String searchTerm, String searchTerm2);
 
     
 }

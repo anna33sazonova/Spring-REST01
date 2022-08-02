@@ -31,9 +31,8 @@ public class BookController {
    }
 
    @GetMapping("/books")
-   public String getAll(Model model) {
-    model.addAttribute("books", bookRepository.findAll());
-     return "books";
+   public List<Book> getAll() {
+       return bookRepository.findAll();
    }
 
    @PostMapping("/book") 
@@ -57,7 +56,7 @@ public class BookController {
    @PostMapping("/book/search")
    public List<Book> search (@RequestBody Map<String, String> body) {
     String searchTerm = body.get("text");
-    return bookRepository.findByTitleContainingOrContentContaining(searchTerm, searchTerm);
+    return bookRepository.findByTitleContainingOrAuthorContaining(searchTerm, searchTerm);
    }
 
 }
